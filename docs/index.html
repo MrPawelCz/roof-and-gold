@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roof & Gold — UK & Turkey housing comparison</title>
+  <meta name="description" content="Explore UK and Turkish house prices in gold and gross wages from 2006–2025, and test transparent future scenarios.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314212d'/%3E%3Cpath d='M7 16L16 8L25 16M11 14V24H21V14' fill='none' stroke='%23d2aa63' stroke-width='2.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script><script defer src="model.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 15L16 5L27 15M9 12V27H23V12M14 27V18H19V27"/></svg><span>Roof <em>&</em> Gold</span></a>
+  <div class="header-description">THE HOUSING PERSPECTIVE</div>
+  <a href="#methodology" class="source-link">Sources & methodology <span aria-hidden="true">↗</span></a>
+</div></header>
+<main>
+  <div class="page-heading"><div><div class="eyebrow">UNITED KINGDOM <span>×</span> TURKEY</div><h1>What does a home really cost?</h1><p>Twenty years of housing, measured in money, gold and work.</p></div><div class="data-stamp"><span>Historical window</span><strong>2006 — 2025</strong><small>Complete calendar years</small></div></div>
+  <section class="comparison" aria-labelledby="comparison-heading">
+    <div class="section-top"><h2 id="comparison-heading">A different measure of value</h2><div class="segmented" role="group" aria-label="Measure house prices in"><button type="button" data-measure="gold" aria-pressed="true"><span aria-hidden="true">◇</span> Gold</button><button type="button" data-measure="wages" aria-pressed="false"><span aria-hidden="true">≋</span> Wages</button><button type="button" data-measure="currency" aria-pressed="false"><span aria-hidden="true">£</span> Local currency</button></div></div>
+    <p class="comparison-basis">UK national-average home · Turkey modeled 100 m² home · Gross minimum wages</p>
+    <div class="metric-grid" id="metrics" aria-live="polite"></div>
+    <div class="workspace">
+      <section class="chart-panel" aria-label="Historical and projected house prices">
+        <div class="chart-toolbar"><div><h3 id="chart-title">A home, priced in gold</h3><p id="chart-subtitle">Troy ounces per home · lower means less gold needed</p></div><label class="compact-select">Display<select id="display" aria-label="Chart display"><option value="absolute">Actual units</option><option value="indexed">2010 = 100</option></select></label></div>
+        <div class="legend"><span><i class="key uk"></i>United Kingdom</span><span><i class="key tr"></i>Turkey</span><span class="forecast-key"><i></i>Scenario</span></div>
+        <div id="chart" class="chart" tabindex="0" role="img" aria-label="Interactive price chart. Use left and right arrow keys to select a year."></div>
+        <div class="year-control"><label for="year">Inspect a year <strong id="selected-year">2025</strong></label><input id="year" type="range" min="2006" max="2030" value="2025" step="1"><div class="range-labels"><span>2006</span><span id="year-end">2030</span></div></div>
+        <div class="chart-note"><span aria-hidden="true">ⓘ</span><p id="chart-note">Turkey’s official housing index begins in 2010. Earlier years are intentionally left blank.</p></div>
+      </section>
+      <aside class="forecast-panel" aria-labelledby="forecast-heading">
+        <div class="forecast-heading"><span class="eyebrow">LOOKING AHEAD</span><label class="toggle"><input id="forecast" type="checkbox" checked><span></span><span class="sr-only">Show forecast</span></label></div>
+        <h2 id="forecast-heading">Explore the next chapter.</h2><p>Change the assumptions. See what they mean for affordability.</p>
+        <div class="forecast-pickers"><label>Scenario<select id="scenario"><option value="trend">Recent trend</option><option value="easing">Housing cools</option><option value="pressure">Housing accelerates</option><option value="custom">Custom assumptions</option></select></label><label>Years ahead<select id="horizon"><option value="3">3 years</option><option value="5" selected>5 years</option><option value="10">10 years</option></select></label></div>
+        <div class="assumptions-heading"><h3>Annual change</h3><span>UK / Turkey</span></div>
+        <div class="assumption-row"><span>Home prices</span><div><label><span class="sr-only">UK home price growth percent</span><input id="ukHouse" type="number" min="-30" max="100" step="0.1" value="4">%</label><label><span class="sr-only">Turkey home price growth percent</span><input id="trHouse" type="number" min="-30" max="100" step="0.1" value="25">%</label></div></div>
+        <div class="assumption-row"><span>Gross wages</span><div><label><span class="sr-only">UK wage growth percent</span><input id="ukWage" type="number" min="-30" max="100" step="0.1" value="4">%</label><label><span class="sr-only">Turkey wage growth percent</span><input id="trWage" type="number" min="-30" max="100" step="0.1" value="22">%</label></div></div>
+        <div class="assumption-row"><span>Local currency / $<small>Positive = weaker currency</small></span><div><label><span class="sr-only">GBP per USD growth percent</span><input id="ukFx" type="number" min="-30" max="100" step="0.1" value="0">%</label><label><span class="sr-only">TRY per USD growth percent</span><input id="trFx" type="number" min="-30" max="100" step="0.1" value="18">%</label></div></div>
+        <div class="assumption-row"><span>Gold in US dollars</span><div><label class="wide-input"><span class="sr-only">Gold USD growth percent</span><input id="goldGrowth" type="number" min="-30" max="100" step="0.1" value="5">%</label></div></div>
+        <div id="forecast-result" class="forecast-result" aria-live="polite"></div>
+        <p class="forecast-footnote" id="forecast-explanation">A transparent scenario, not a guaranteed prediction.</p>
+      </aside>
+    </div>
+  </section>
+  <section class="basis-section" aria-labelledby="basis-title"><div><span class="eyebrow">MAKE THE COMPARISON YOURS</span><h2 id="basis-title">The homes and wages behind the numbers</h2><p>National housing trends applied to a clearly defined home in each country.</p></div><div class="basis-controls"><label>UK reference home, 2025 (£)<input type="number" id="ukAnchor" min="10000" max="10000000" step="any"></label><label>Turkey reference home, 2025 (₺)<input type="number" id="trAnchor" min="10000" max="100000000" step="any"></label><label>UK weekly working hours<input type="number" id="hours" min="1" max="80" step="0.5" value="37.5"></label><button type="button" id="reset" class="text-button">Reset to defaults ↺</button></div><p id="basis-note" class="basis-note"></p></section>
+  <section class="methodology" id="methodology" aria-labelledby="method-title"><div class="section-top"><div><span class="eyebrow">A CLEARER PICTURE</span><h2 id="method-title">Know what you’re comparing.</h2></div><button type="button" id="download" class="outline-button">↓ Download comparison</button></div><div class="method-grid">
+    <article><span class="method-number">01 / THE MEASURES</span><h3>Gold and gross pay</h3><p>Gold ounces = home price ÷ (gold US$/oz × local currency per US$). Wage years = home price ÷ annual gross minimum pay. This is a price-to-income multiple, not years needed to save.</p><p>UK pay uses the adult statutory rate, weighted across each calendar year, × weekly hours × 52. Turkish pay uses the calendar-year average monthly gross minimum wage × 12.</p></article>
+    <article><span class="method-number">02 / THE COVERAGE</span><h3>Observed trends, defined homes</h3><p id="coverage-text"></p><p>Annual averages smooth monthly movements. Countries use different property baskets and valuation methods; these are national benchmarks, not matched homes or city-level valuations.</p></article>
+    <article><span class="method-number">03 / THE FUTURE</span><h3>Assumptions, made visible</h3><p>Recent trend extends each input’s 2020–2025 compound annual growth rate. Alternative scenarios change house-price growth only. All rates are editable and compound annually from 2025.</p><p>2026 onward is a projection, including the current incomplete year. There are no probability claims or confidence intervals. Taxes, borrowing costs, living expenses and transaction fees are excluded.</p></article>
+  </div><details class="source-details"><summary>Sources, dates & calculation notes <span aria-hidden="true">+</span></summary><div id="sources" class="sources"></div></details><details class="data-details"><summary>Explore the annual data <span aria-hidden="true">+</span></summary><div class="table-scroll"><table><caption id="table-caption">Annual house prices and affordability</caption><thead><tr><th>Year</th><th>Status</th><th>UK price (£)</th><th>Turkey price (₺)</th><th>UK gold (oz)</th><th>Turkey gold (oz)</th><th>UK wage years</th><th>Turkey wage years</th></tr></thead><tbody id="data-table"></tbody></table></div></details></section>
+  <footer><span class="footer-brand">Roof & Gold</span><span>Different currencies. A shared perspective.</span><span>Research snapshot · <time datetime="2026-09-24">24 September 2026</time></span></footer>
+</main><div class="toast" id="toast" role="status"></div><noscript>This app requires JavaScript to calculate comparisons. Please enable JavaScript.</noscript>
+</body></html>

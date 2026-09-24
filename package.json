@@ -1,0 +1,10 @@
+{
+  "name": "roof-and-gold",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UK and Turkey housing in gold and wages",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/test-model.mjs"
+  }
+}
